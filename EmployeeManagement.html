@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let employees=[];
+
+        function addEmp(id,name,salary,role){
+            employees.push({id,name,salary,role})     
+            console.log("added",employees);  
+        }
+        addEmp(1,"Taehyung",40000,"software developer");
+        addEmp(2,"Jungkook",50000,"CEO");
+        console.log("added",employees);
+
+        function calculateSal(){
+            let total=employees.reduce((sum,emp)=>sum + emp.salary,0);
+            console.log(total);
+        }
+        calculateSal()
+
+            function updateEmp(id,newDetail){
+                let emp=employees.find((e)=>e.id === id);
+                if(emp){
+                    Object.assign(emp,newDetail);
+                    console.log("updated",employees);
+                }
+                else{
+                    console.log("emp not found");
+                }
+            }
+            updateEmp(1,({name:"Kimtae"}));
+
+            function removeEmp(index){
+                if(index >= 0 && index < employees.length){
+                    employees.splice(index,1)
+                    console.log("deleted",employees)
+                }
+                else{
+                    console.log("emp not found");
+                }
+            }
+            removeEmp(0)
+
+            function searchEmp(){
+                let input=prompt("Enter the Emp name")
+                if(!input){
+                    console.log("Enter a name correctly")
+                }
+                let result=employees.filter((e)=>e.name.toLowerCase()===input.toLowerCase())
+                if(result.length >0){
+                    console.log("Employee found");
+                }
+                else{
+                    console.log("Emp not found")
+                }
+            }
+            searchEmp()
+
+    </script>
+    
+</body>
+</html>
