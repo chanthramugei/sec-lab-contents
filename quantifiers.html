@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //quantifiers specify how many character or group should appear//
+    //* -matches 0 or more consecutive as it allows empty matches too//
+    //atlast it checks once again so if not it returns("")//
+    //+ -unlike ?,this does not allow empty matches instead of matching// 
+    // one a at a time,it groups consecutive as together//
+    //? -Mtches 0 or one at each position.atlast it checks once again so if//
+    // not it returns//
+
+    let text="aaaba";
+    let pattern=/\a?/g;
+    let result=text.match(pattern);
+    console.log(result);
+
+    //Modifiers/flags change how regex matches//
+    //i ->case insensitive,g ->global match,m ->multiple //
+
+    let sentence="javascript programming language.\njava programming language"
+    let pattern2=/\programming+/igm;
+    let result2=sentence.match(pattern2);
+    console.log(result2)
+
+    //Meta characters have special meaning in regex//
+    //. ->any character except newline,\d ->digit(0-9),\w ->word character
+    // (letters,dig),\s ->whitespace,^ ->start of string/line,$ ->end of string/line//
+
+    let digitchar="001js"
+    let pattern3=/\d+\w+/g;
+    let result3=digitchar.match(pattern3)
+    console.log(result3);
+
+    //parantheses are used to group patterns and capture submatches//
+    let texts="Hai Kimtaehyung";
+        let pattern4=/(\w+)\s+(\w+)/;
+        let result4=texts.match(pattern4)
+        console.log(result4);
+        console.log(result4[0]);
+        console.log(result4[1]);
+        console.log(result4[2]);
+
+    //test()-returns true/false//
+    
+    //exec()-group the output//
+    let fruit="apple banana apple grape"
+    let pattern5=/(apple)/;
+    let result5=pattern5.exec(fruit);
+    console.log(result5[0]);
+    console.log(result5[1]);
+
+    //match()-return//
+
+    //replace()-replace matches//
+    let pattern6=/apple/g;
+    let result6=fruit.replace(pattern6,"orange");
+    console.log(result6);
+
+    //split()-splits string using regex//
+    let pattern7=/\s+/;
+    let result7=fruit.split(pattern7);
+    console.log(result7);
+</script>    
+</body>
+</html>
+
