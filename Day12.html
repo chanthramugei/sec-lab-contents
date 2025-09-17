@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //Set is a collection of unique values.it automatically removes duplicates
+        //let mySet=new Set([iterable]);
+
+        let email=new Set([]);
+        email.add("js@gmail.com");
+        email.add("java@gmail.com");
+        email.add("py@gmail.com");
+        email.add("py@gmail.com");
+        console.log(email);
+        //email.delete("py@gmail.com");
+        //console.log(email)
+        //email.clear();
+        //console.log(email);
+        for(let mailId of email){
+            console.log(mailId);
+        }
+        email.forEach(x=>{
+            console.log(x)
+        })
+        let admin=new Set(["write","read","delete"]);
+        let user=new Set(["read"]);
+
+        function hasPermission(role,granted){
+            return role.has(granted)
+        }
+        console.log(hasPermission(admin,"delete"))
+        console.log(hasPermission(user,"delete"))
+
+        let setA=new Set([1,2,3,4,5,1]);
+        let setB=new Set([6,7,8,9,10,1]);
+
+        let union=new Set([...setA,...setB])
+        console.log(union)
+
+        let intersection=new Set([...setA].filter(x=>setB.has(x)))
+        console.log(intersection)
+
+        let diff=new Set([...setA].filter(x=>!setB.has(x)))
+        console.log(diff)
+
+        //returns a new iterator object with[value,value]pairs
+
+        let bts=new Set(["RM","Jin","Suga","J-hope","Jimin","V","JK"])
+        let entries=bts.entries();
+        for(let entry of entries){
+            console.log(entry);
+        }
+
+        //WeakMap is a collection of key/value pairs where the 
+        // keys must be an object
+
+        let user1={name:"Taehyung"};
+        let user2={name:"Bogum"};
+        let mymap=new Map()
+        mymap.set(user1,"welcome Taehyung");
+        mymap.set(user2,"welcome Bogum");
+        console.log(mymap.get(user1));
+
+        //for(let map of mymap){
+        //   console.log(map)
+        //}
+
+
+    </script>
+</body>
+</html>
